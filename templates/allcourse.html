@@ -1,0 +1,119 @@
+{% extends 'header.html' %}
+
+{% block title %}
+Courses
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container p-4">
+<div class="row">
+<div class="col-8">
+<h3> All Courses</h4>
+
+</div>
+
+<div class="col-4">
+<div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Search a Particular Course" aria-label="Search"
+    aria-describedby="search-addon" />
+  <button type="button" class="btn btn-outline-primary">search</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<hr>
+<div class="container">
+<div class="row">
+<div class="col-8">
+<div class="row">
+
+<div class="col-6">
+
+<div class="card" >
+  <img class="card-img-top" src="https://dummyimage.com/200x200/000/fff" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">John Doe</h4>
+    <p class="card-text">Some example text.</p>
+    <a href="#" class="btn btn-primary">See Profile</a>
+  </div>
+</div>
+
+</div>
+
+<div class="col-6">
+
+<div class="card" >
+  <img class="card-img-top" src="https://dummyimage.com/200x200/000/fff" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">John Doe</h4>
+    <p class="card-text">Some example text.</p>
+    <a href="#" class="btn btn-primary">See Profile</a>
+  </div>
+</div>
+
+</div>
+
+
+</div>
+<div class="container p-4">
+       <p class="text-center"><a class="btn btn-primary" href="{% url 'courseadd' %}">Add A New Course</a></p>
+</div>
+</div>
+
+
+
+<div class="col-4">
+
+<h3> Side Bar</h4>
+
+<div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Search a Particular Course" aria-label="Search"
+    aria-describedby="search-addon" />
+  <button type="button" class="btn btn-outline-primary">search</button>
+</div>
+
+<hr>
+
+<div class="second">
+
+   <header>
+              <h3 class="h6">Latest Courses Added</h3>
+            </header>
+			
+			<ul class="list-group">
+  <li class="list-group-item">First item</li>
+  <li class="list-group-item">Second item</li>
+  <li class="list-group-item">Third item</li>
+</ul>
+</div>
+
+<hr>
+
+<div class="third">
+	   <header>
+              <h3 class="h6">Course Category </h3>
+            </header>
+			
+			<ul class="list-group">
+  <li class="list-group-item">First item</li>
+  <li class="list-group-item">Second item</li>
+  <li class="list-group-item">Third item</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<br/>
+
+
+{% endblock %}

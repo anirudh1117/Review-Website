@@ -1,0 +1,61 @@
+
+
+{% extends 'header.html' %}
+
+{% load static %}
+
+{% block title %}
+Signup Page
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container p-3">
+    
+
+    <div id="form" class="border col-5 mx-auto p-4">
+    <br>
+    <h3 class="display-5 p-2 text-center text-danger"> Signup Form</h3>
+    <br>
+     <div class="ui warning message" id="message" hidden="true">
+      
+    </div>
+    <form onsubmit="validate(event)" class="ui form" action="#" method="POST">
+    {% csrf_token %}
+
+   
+  <div class="field"> 
+    <label>Name:</label>
+    <input type="text" required  name="name" placeholder="Enter the First Name">
+  </div>
+
+    <div class="field">
+    <label>Phone:</label>
+    <input type="number" name="number" placeholder="Enter the Phone number">
+  </div>
+  <div class="field">
+    <label>Email:</label>
+    <input type="email" required  name="email" placeholder="Enter the Email Id">
+  </div>
+ 
+      <div class="field">
+    <label>Password:</label>
+    <input type="password" required name="password" placeholder="Enter the your password">
+  </div>
+
+     <div class="field">
+    <label>Confirm Password:</label>
+    <input type="password" required  name="repassword" placeholder="Enter the your password again">
+  </div>
+  <button class="ui button btn btn-info" type="submit">Submit</button>
+</form>
+    </div>
+
+</div>
+
+{% endblock %}
