@@ -8,7 +8,7 @@
         background-color: #E0E0E0;
         margin-top: 10px
     }
-    
+
     .or {
         width: 10%;
         font-weight: bold
@@ -26,30 +26,36 @@
                     </div>
                     <div class="card-body">
 
-                        <form action="#" method="POST">
+                        <form action="" method="POST">
                             {% csrf_token %}
                             <div class="row">
-                                <a href="" class="btn btn-block btn-outline-info"> <i class="fab fa-google"></i>   Login via Google</a>
-                                <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                                <a href="" class="btn btn-block btn-outline-info"> <i class="fab fa-google"></i>   Login
+                                    via Google</a>
+                                <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>
+                                      Login via facebook</a>
                             </div>
                             <br>
                             <div class="row px-3 mb-4">
                                 <div class="line"></div> <small class="or text-center">Or</small>
                                 <div class="line"></div>
                             </div>
+                            {%if form.errors%}
+                            <div class="alert alert-danger" role="alert">
+                                {% for i in form.non_field_errors%}
+                                {{ i|escape }}
+                                {%endfor%}
+                               
+                            </div>
+                            {%endif%}
                             <div class="form-group">
                                 <label for="email_or_username">Email or Username</label>
                                 {{ form.email }}
-                              </div>
-                              {%if form.errors.email%}
-                              <div class="alert alert-warning" role="alert">
-                                {{form.errors.email}}
-                              </div>
-                              {%endif%}
-                              <div class="form-group">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="password">Password</label>
                                 {{ form.password }}
-                              </div>
+                            </div>
                             <input type="submit" value="Login" class="btn btn-primary btn-block">
                         </form>
                     </div>
