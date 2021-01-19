@@ -1,0 +1,61 @@
+{% extends 'header.html' %}
+{% block title %} Sign in {% endblock %}
+{% block content %}
+<style>
+    .line {
+        height: 1px;
+        width: 45%;
+        background-color: #E0E0E0;
+        margin-top: 10px
+    }
+    
+    .or {
+        width: 10%;
+        font-weight: bold
+    }
+</style>
+<section id="register" class="bg-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>
+                            <i class="fas fa-user-plus"></i> Login
+                        </h2>
+                    </div>
+                    <div class="card-body">
+
+                        <form action="#" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <a href="" class="btn btn-block btn-outline-info"> <i class="fab fa-google"></i>   Login via Google</a>
+                                <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                            </div>
+                            <br>
+                            <div class="row px-3 mb-4">
+                                <div class="line"></div> <small class="or text-center">Or</small>
+                                <div class="line"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email_or_username">Email or Username</label>
+                                {{ form.email }}
+                              </div>
+                              {%if form.errors.email%}
+                              <div class="alert alert-warning" role="alert">
+                                {{form.errors.email}}
+                              </div>
+                              {%endif%}
+                              <div class="form-group">
+                                <label for="password">Password</label>
+                                {{ form.password }}
+                              </div>
+                            <input type="submit" value="Login" class="btn btn-primary btn-block">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

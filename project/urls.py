@@ -25,6 +25,7 @@ urlpatterns = [
     path('course/<int:pk>', courseDetail, name="details"),
     path('contact/', include('contact.urls')),
     path('addcourse/', include('addcourse.urls')),
+    path('accounts/', include('accounts.urls')),
     path('about/', About, name='about'),
    
     path('courses/', include('course.urls')),
