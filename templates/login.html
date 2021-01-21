@@ -26,14 +26,14 @@
                     </div>
                     <div class="card-body">
 
+                        <div class="row">
+                            <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-block btn-outline-info"> <i class="fab fa-google"></i>   Login
+                                via Google</a>
+                            <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>
+                                  Login via facebook</a>
+                        </div>
                         <form action="" method="POST">
                             {% csrf_token %}
-                            <div class="row">
-                                <a href="" class="btn btn-block btn-outline-info"> <i class="fab fa-google"></i>   Login
-                                    via Google</a>
-                                <a href="" class="btn btn-block btn-outline-primary"> <i class="fab fa-facebook-f"></i>
-                                      Login via facebook</a>
-                            </div>
                             <br>
                             <div class="row px-3 mb-4">
                                 <div class="line"></div> <small class="or text-center">Or</small>

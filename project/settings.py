@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'course',
     'accounts',
     'addcourse',
-    'contact'
+    'contact',
+    'social_django'  # <--social login
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', # <--social login
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -66,10 +68,19 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # <--social login
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (  # <--social login
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
@@ -128,3 +139,14 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'username'
 EMAIL_HOST_PASSWORD = 'password'
 EMAIL_PORT = 587
+
+LOGIN_URL = 'login'    # <--social login
+LOGOUT_URL = 'logout'
+#LOGIN_REDIRECT_URL = '/home'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '2746382175650816'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '6d41a328d0f39e1ecf925c0e8c242398'  # App Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '461998924717-oii4t9o5ifsem0uma7sik46468bfa4mv.apps.googleusercontent.com' # App ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'hCbOk3XDtvnPgiFYpvhjAmSn'  # App Secret

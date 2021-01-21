@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 
 from course.views import Home,About,courseDetail
 
@@ -27,6 +28,5 @@ urlpatterns = [
     path('addcourse/', include('addcourse.urls')),
     path('accounts/', include('accounts.urls')),
     path('about/', About, name='about'),
-   
     path('courses/', include('course.urls')),
 ] 

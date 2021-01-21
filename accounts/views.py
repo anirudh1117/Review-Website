@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .forms import RegistrationForm, LoginForm
 from django.contrib import auth
 from .check_username_or_email import check_username_or_email
-
+from django.apps import apps
 # Create your views here.
 
 
@@ -65,11 +65,9 @@ def logout(request):
     auth.logout(request)
     return redirect('home')
 
-"""
-def dashboard(request):
-    user_accounts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
-    context = {
-        'account': user_accounts
-    }
-    return render(request,'accounts/dashboard.html',context)from django.shortcuts import render, redirect
-"""
+
+def profile(request):
+    for i in apps.get_models():
+        print(i)
+    
+    return render(request, 'profile.html')
