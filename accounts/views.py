@@ -5,12 +5,12 @@ from .forms import RegistrationForm, LoginForm
 from django.contrib import auth
 from .check_username_or_email import check_username_or_email
 from django.apps import apps
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
 def register(request):
     if request.method == 'POST':
-        print('here')
         form = RegistrationForm(request.POST)
         if form.is_valid():
             name = request.POST["name"]
@@ -60,12 +60,12 @@ def login(request):
     }
     return render(request, 'login.html', context)
 
-
+@login_required
 def logout(request):
     auth.logout(request)
     return redirect('home')
 
-
+@login_required(redirect_field_name='profile')
 def profile(request):
     for i in apps.get_models():
         print(i)

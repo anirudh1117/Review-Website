@@ -1,21 +1,23 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .forms import AddCourseForm
 from .models import AddCourse
 
+@login_required
 def addcourse(request):
-    if request.method=="POST":
-        user = request.POST['id']
-        course_name = request.POST['course-name']
-        instructor_name = request.POST['instructor-name']
-        price_unit = request.POST['price_unit']
-        price = request.POST['price']
-        category = request.POST['category']
-        course_mode = request.POST['course-mode']
-        course_url = request.POST['course-url']
-        duration = request.POST['duration']
-        prerequistes = request.POST['prerequistes']
-        description = request.POST['decription']
+    if request.method=="POST" and request.user.is_authenticated:
+        form = AddCourseForm(request.POST)
+        print('user ',request.user)
+        if form.is_valid():
+            form.user_id=request.user
+            form.save()
+            return render(request,'home.html')
+        else:
+            print('error')
+    
+    form = AddCourseForm()
+    context={
+        'form':form
+    }
 
-        add = AddCourse(user_id=user,course_name=course_name,instructor_name=instructor_name,price_unit=price_unit,price=price,category=category,course_mode=course_mode,course_url=course_url,duration=duration,prerequistes=prerequistes,description=description)
-        add.save()
-
-    return render(request,'addcourse.html')
+    return render(request,'addcourse.html',context)
